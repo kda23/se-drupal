@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains cron_task.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_help().
+ */
+function cron_task_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the cron_task module.
+    case 'help.page.cron_task':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Create Queue worker in Drupal') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function cron_task_cron() {
+//    $time = \Drupal::time()
+//        ->getCurrentTime();
+//    if( date('G', $time) == 19) { // At 19'o clock
+        \Drupal::database()->delete('users_field_data')
+            ->condition('status',0)
+            ->execute();
+        drupal_flush_all_caches();
+//    }
+}
+
+// /**
+//  * Implements hook_entity_insert().
+//  */
+// function my_module_entity_insert(EntityInterface $entity) {
+//   /** @var \Drupal\file\Entity\File $entity */
+//   if ($entity instanceof FileInterface) {
+//     $image = \Drupal::service('image.factory')->get($entity->getFileUri());
+//     /** @var \Drupal\Core\Image\Image $image */
+//     if ($image->isValid()) {
+//       $queue = \Drupal::queue('my_module_image_style');
+//       $data = ['entity' => $entity];
+//       $queue->createItem($data);
+//     }
+//   }
+// }

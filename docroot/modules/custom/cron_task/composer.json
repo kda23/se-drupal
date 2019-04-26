@@ -1,0 +1,14 @@
+{
+  "name": "drupal/cron_task",
+  "type": "drupal-module",
+  "description": "create Queue worker in Drupal",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/cron_task",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/cron_task",
+    "source": "http://cgit.drupalcode.org/cron_task"
+  },
+  "require": { }
+}

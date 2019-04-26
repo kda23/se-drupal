@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cron_task
+title: 'Sample Cron Job for publishing articles'
+id: sample_cron_job
+module: cron_task
+callback: cron_task_sample_cron_job
