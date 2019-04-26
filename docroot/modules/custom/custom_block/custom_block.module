@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains custom_block.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function custom_block_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the custom_block module.
+    case 'help.page.custom_block':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My awesome custom block') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_block_theme() {
+  return [
+     'custom_block' => [
+       'render element' => 'children',
+       'template' => 'custom-block',
+       'list' => null,
+       'count' => null,
+    ],
+  ];
+}
